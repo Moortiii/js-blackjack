@@ -38,15 +38,6 @@ function chooseWinner() {
   return statusMessage;
 }
 
-function playGame() {
-  playerHandSprite();
-  dealerHandSprite();
-  playerBust();
-  $("#stay-hand").click(function() {
-    drawWinnerText();
-  })
-}
-
 function playAgain() {
   background(66, 244, 155);
   hidden = true;
@@ -68,5 +59,5 @@ function setup() {
 }
 
 function draw() {
-  playGame();
+  redrawSketch();
 }
