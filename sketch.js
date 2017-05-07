@@ -51,13 +51,10 @@ function playAgain() {
 
 function setup() {
   createCanvas(800, 800);
-  background(66, 244, 155);
   noLoop();
-  createDeck();
-  shuffleDeck();
-  dealHands();
+  playAgain();
 }
 
 function draw() {
-  redrawSketch();
+  playAgain();
 }
