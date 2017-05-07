@@ -33,7 +33,7 @@ function chooseWinner() {
       statusMessage = "You have " + diff + " point(s) more than the dealer, you win!";
     }
   } else if (playerSum < dealerSum) {
-    statusMessage = "Dealer beats you by " + diff + " points, you lose";
+    statusMessage = "Dealer beats you by " + diff + " point(s), you lose";
   }
   return statusMessage;
 }
@@ -52,7 +52,6 @@ function playAgain() {
 function setup() {
   createCanvas(800, 800);
   noLoop();
-  playAgain();
 }
 
 function draw() {
