@@ -1,4 +1,9 @@
-var suits = ["h", "c", "s", "d"];
+// TO-DO: Get the "Stay" button to work
+// TO-DO: Allow the user to play again
+// TO-DO: Show what the dealers hand was upon ending the game
+// TO-DO: Allow the game to count Aces as both 1 and 11 points
+
+var suits = ["h", "c", "s", "d"]; // Hearts, clubs, spades, diamonds
 var deck = [];
 var playerHand = [];
 var dealerHand = [];
@@ -11,6 +16,7 @@ function createDeck() {
   }
 }
 
+// Shuffle the deck three times to make sure it's done properly
 function shuffleDeck() {
   var firstShuffle = shuffle(deck);
   var secondShuffle = shuffle(firstShuffle);
@@ -27,6 +33,9 @@ function drawCard() {
   return card;
 }
 
+
+// This function takes a card in the format "xy(y)" where x is a letter and the y(s) are numbers
+// It then splits it into a list, extracts the value of the card and returns the value
 function getValue(card) {
   var cardList = card.split("");
   var stringValue = "";
@@ -44,6 +53,7 @@ function getValue(card) {
   return intValue;
 }
 
+// Grabs the sum of an arbitrary hand
 function getSum(hand) {
   var sum = 0;
   for(var i = 0; i < hand.length; i++) {
@@ -91,7 +101,7 @@ function drawPlayerHand() {
     fill(0);
     textAlign(CENTER);
     textSize(16);
-    text(cardValue, 100+spacing, height/2);
+    text(cardValue, 100 + spacing, height/2);
     spacing += 100;
   }
   var handSum = "Sum of your hand: " + getSum(playerHand);
@@ -108,10 +118,10 @@ function drawDealerHand() {
   for(var i = 0; i < dealerHand.length; i++) {
     rectMode(CENTER);
     fill(255);
-    rect(100+spacing, 100, w, h);
+    rect(100 + spacing, 100, w, h);
     spacing += 100;
   }
-  var cardValue = dealerHand[0];
+  var cardValue = dealerHand[0]; // We should only show the dealer's first card before the game has ended
   fill(0);
   textAlign(CENTER);
   textSize(16);
@@ -121,8 +131,9 @@ function drawDealerHand() {
 function getEndScreenMessage() {
   var playerSum = getSum(playerHand);
   var dealerSum = getSum(dealerHand);
-  endScreenMessage = "suckmydick";
+  endScreenMessage = "";
 
+  // Generate an endScreenMessage based on the relationship between playerSum and dealerSum
   if(dealerSum > 21) {
     endScreenMessage = "Dealer busts, you win!";
   } else if(playerSum > 21) {
@@ -158,7 +169,7 @@ function setup() {
   var stay = createButton("Stay");
   var playAgain = createButton("Play Again");
   hit.mousePressed(hitMe);
-  hit.mousePressed(dealerDraw); // The function checks if the dealer should actually draw
+  hit.mousePressed(dealerDraw); // The function itself checks if the dealer should actually draw a card
   stay.mousePressed(displayEndScreen);
 }
 
