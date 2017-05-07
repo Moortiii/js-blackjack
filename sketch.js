@@ -46,7 +46,7 @@ function playAgain() {
   createDeck();
   shuffleDeck();
   dealHands();
-  playGame();
+  redrawSketch();
 }
 
 function setup() {
