@@ -22,6 +22,7 @@ function dealHands() {
 function hitMe() {
   var newCard = drawCard();
   playerHand.push(newCard);
+  dealerDraw();
 }
 
 function dealerDraw() {
