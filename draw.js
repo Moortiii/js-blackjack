@@ -1,8 +1,8 @@
 function dealerCardSprite(hand, card, y) {
-  var w = 100;
-  var h = 150;
-  var x = 100;
-  var spacing = 150;
+  var w = 75;
+  var h = 125;
+  var x = width/2+360;
+  var spacing = -120;
   this.y = y;
 
   for (var i = 0; i < hand.length; i++) {
@@ -13,12 +13,6 @@ function dealerCardSprite(hand, card, y) {
     if(hidden) {
       fill(255);
     } else {
-      var dealerSum = getSum(dealerHand);
-      var sumText = "- Sum: " + dealerSum;
-      textSize(28);
-      textAlign(LEFT);
-      fill(255);
-      text(sumText, 230, 75);
       fill(0);
     }
 
@@ -34,14 +28,14 @@ function dealerCardSprite(hand, card, y) {
   noStroke();
   textAlign(CENTER);
   textSize(22);
-  text(hand[0], 100, y);
+  text(hand[0], width/2+360, y);
 }
 
 function userCardSprite(hand, card, y) {
-  var w = 100;
-  var h = 150;
-  var x = 100;
-  var spacing = 150;
+  var w = 75;
+  var h = 125;
+  var x = width/2-360;
+  var spacing = 120;
   this.y = y;
 
   for (var i = 0; i < hand.length; i++) {
@@ -62,23 +56,23 @@ function playerHandSprite() {
   textSize(32);
   textAlign(LEFT);
   fill(255);
-  text("Your hand", 50, 375);
+  text("Your hand", width/2-360, 375);
   for (var i = 0; i < playerHand.length; i++) {
     userCardSprite(playerHand, playerHand[i], 500);
   }
   var playerSum = getSum(playerHand);
   var sumText = "Your sum: " + playerSum;
   textSize(28);
-  textAlign(LEFT);
+  textAlign(CENTER);
   fill(255);
-  text(sumText, 50, height - 150);
+  text(sumText, width/2, height - 150);
 }
 
 function dealerHandSprite() {
   textSize(28);
-  textAlign(LEFT);
+  textAlign(RIGHT);
   fill(255);
-  text("Dealer's hand", 50, 75);
+  text("Dealer's hand", width/2+360, 75);
   for (var i = 0; i < dealerHand.length; i++) {
     dealerCardSprite(dealerHand, dealerHand[i], 200);
   }
@@ -88,17 +82,18 @@ function drawWinnerText() {
   var statusMessage = chooseWinner();
   fill(255);
   textSize(28);
-  textAlign(LEFT);
-  text(statusMessage, 50, height - 50);
+  textAlign(CENTER);
+  text(statusMessage, width/2, height - 50);
 }
 
 function playerBust() {
   var playerSum = getSum(playerHand);
-  var statusMessage = "You bust with " + playerSum + ", dealer wins";
+  var dealerSum = getSum(dealerHand);
+  var statusMessage = "You bust with " + playerSum + ", dealer wins with " + dealerSum;
   fill(255);
   textSize(28);
-  textAlign(LEFT);
-  text(statusMessage, 50, height - 50);
+  textAlign(CENTER);
+  text(statusMessage, width/2, height - 50);
 }
 
 function playerIsBust() {

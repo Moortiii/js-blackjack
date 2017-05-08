@@ -1,9 +1,19 @@
+html {
+  height: 100%;
+}
+
 body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   background: #333;
   font-family: 'Vesper Libre', serif;
 }
 
 #sketch-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clear {
@@ -33,6 +43,7 @@ body {
 }
 
 .container {
+  flex: 1;
   margin: 0 auto;
   width: 800px;
   max-width: 60%;

@@ -62,7 +62,7 @@ function playAgain() {
 }
 
 function setup() {
-  var canvas = createCanvas(800, 800);
+  var canvas = createCanvas(windowWidth, windowHeight - 200);
   // Moves the canvas so it's inside a div on the page
   canvas.parent('sketch-holder');
   noLoop();
@@ -70,4 +70,8 @@ function setup() {
 
 function draw() {
   playAgain();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight - 200);
 }
