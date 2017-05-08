@@ -14,7 +14,6 @@ function discardCard() {
 }
 
 function drawCard() {
-  background(66, 244, 155);
   var card = deck[deck.length -1]; // Draw the last card from the deck
   discardCard(); // Discard the last card from the deck
   return card;

@@ -1,5 +1,4 @@
 // TO-DO: Allow the game to count Aces as both 1 and 11 points
-
 var hidden = true;
 
 $(document).ready(function() {
@@ -47,7 +46,6 @@ function chooseWinner() {
 function playAgain() {
   $("#stay-hand").attr("disabled", false);
   $("#hit-me").attr("disabled", false);
-  background(66, 244, 155);
   hidden = true;
   playerHand = [];
   dealerHand = [];
@@ -58,7 +56,9 @@ function playAgain() {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  var canvas = createCanvas(800, 800);
+  // Moves the canvas so it's inside a div on the page
+  canvas.parent('sketch-holder');
   noLoop();
 }
 

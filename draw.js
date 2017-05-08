@@ -1,8 +1,8 @@
 function dealerCardSprite(hand, card, y) {
-  w = 100;
-  h = 150;
-  x = 100;
-  spacing = 150;
+  var w = 100;
+  var h = 150;
+  var x = 100;
+  var spacing = 150;
   this.y = y;
 
   for (var i = 0; i < hand.length; i++) {
@@ -13,6 +13,12 @@ function dealerCardSprite(hand, card, y) {
     if(hidden) {
       fill(255);
     } else {
+      var dealerSum = getSum(dealerHand);
+      var sumText = "- Sum: " + dealerSum;
+      textSize(28);
+      textAlign(LEFT);
+      fill(255);
+      text(sumText, 230, 75);
       fill(0);
     }
 
@@ -32,10 +38,10 @@ function dealerCardSprite(hand, card, y) {
 }
 
 function userCardSprite(hand, card, y) {
-  w = 100;
-  h = 150;
-  x = 100;
-  spacing = 150;
+  var w = 100;
+  var h = 150;
+  var x = 100;
+  var spacing = 150;
   this.y = y;
 
   for (var i = 0; i < hand.length; i++) {
@@ -60,8 +66,8 @@ function playerHandSprite() {
   for (var i = 0; i < playerHand.length; i++) {
     userCardSprite(playerHand, playerHand[i], 500);
   }
-  playerSum = getSum(playerHand);
-  sumText = "Your sum: " + playerSum;
+  var playerSum = getSum(playerHand);
+  var sumText = "Your sum: " + playerSum;
   textSize(28);
   textAlign(LEFT);
   fill(255);
@@ -87,6 +93,7 @@ function drawWinnerText() {
 }
 
 function playerBust() {
+  var playerSum = getSum(playerHand);
   var statusMessage = "You bust with " + playerSum + ", dealer wins";
   fill(255);
   textSize(28);
@@ -100,6 +107,7 @@ function playerIsBust() {
 }
 
 function redrawSketch() {
+  background(48, 219, 110);
   bust = playerIsBust();
   if(bust) {
     disableButtons();
@@ -107,10 +115,11 @@ function redrawSketch() {
     playerHandSprite();
     dealerHandSprite();
     playerBust();
+  } else {
+    playerHandSprite();
+    dealerHandSprite();
+    $("#stay-hand").click(function() {
+      drawWinnerText();
+    })
   }
-  playerHandSprite();
-  dealerHandSprite();
-  $("#stay-hand").click(function() {
-    drawWinnerText();
-  })
 }

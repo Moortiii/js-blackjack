@@ -27,7 +27,7 @@ function hitMe() {
 
 function dealerDraw() {
   var dealerSum = getSum(dealerHand);
-  if(dealerSum < 17) {
+  while(dealerSum < 17) {
     var newCard = drawCard();
     dealerHand.push(newCard);
     dealerSum = getSum(dealerHand);

@@ -12,6 +12,7 @@
   <script language="javascript" type="text/javascript" src="dealer.js"></script>
   <script language="javascript" type="text/javascript" src="draw.js"></script>
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Vesper+Libre" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <!-- this line removes any default padding and style. you might only need one of these values set. -->
   <style>
@@ -23,10 +24,22 @@
 </head>
 
 <body>
+  <header class="header">
+    <div class="container">
+      <ul class="navigation">
+        <li class="nav-item"><a href="#" class="nav-link">Play</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Github</a></li>
+      </ul>
+    </div>
+  </header>
   <div class="container">
-    <button class="button-submit" id="hit-me">Hit Me</button>
-    <button class="button-submit" id="stay-hand">Stay</button>
-    <button class="button-submit" id="play-again">Play Again</button>
+    <div class="clear"></div>
+    <div id="sketch-holder"></div>
+    <div class="button-container">
+      <button class="button-submit" id="hit-me">Hit Me</button>
+      <button class="button-submit" id="stay-hand">Stay</button>
+      <button class="button-submit" id="play-again">Play Again</button>
+    </div>
   </div>
 </body>
 
