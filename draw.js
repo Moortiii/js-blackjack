@@ -102,6 +102,7 @@ function playerIsBust() {
 function redrawSketch() {
   bust = playerIsBust();
   if(bust) {
+    disableButtons();
     hidden = false;
     playerHandSprite();
     dealerHandSprite();

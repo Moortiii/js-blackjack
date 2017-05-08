@@ -9,6 +9,7 @@ $(document).ready(function() {
   })
   $("#stay-hand").click(function() {
     hidden = false;
+    disableButtons();
     redrawSketch();
   })
   $("#play-again").click(function() {
@@ -16,6 +17,11 @@ $(document).ready(function() {
     redrawSketch();
   })
 })
+
+function disableButtons() {
+  $("#stay-hand").attr("disabled", true);
+  $("#hit-me").attr("disabled", true);
+}
 
 function chooseWinner() {
   var statusMessage = "";
@@ -39,6 +45,8 @@ function chooseWinner() {
 }
 
 function playAgain() {
+  $("#stay-hand").attr("disabled", false);
+  $("#hit-me").attr("disabled", false);
   background(66, 244, 155);
   hidden = true;
   playerHand = [];
