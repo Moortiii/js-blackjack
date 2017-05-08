@@ -1,8 +1,9 @@
-// TO-DO: Allow the game to count Aces as both 1 and 11 points
 var hidden = true;
+var message = "";
 
 $(document).ready(function() {
   $("#hit-me").click(function() {
+    disableBet();
     hitMe();
     redrawSketch();
   })
@@ -10,6 +11,9 @@ $(document).ready(function() {
     hidden = false;
     disableButtons();
     redrawSketch();
+    declareWinner();
+    drawWinnerText();
+    checkBets();
   })
   $("#play-again").click(function() {
     playAgain();
@@ -20,38 +24,13 @@ $(document).ready(function() {
 function disableButtons() {
   $("#stay-hand").attr("disabled", true);
   $("#hit-me").attr("disabled", true);
-}
-
-function chooseWinner() {
-  var statusMessage = "";
-  var playerSum = getSum(playerHand);
-  var dealerSum = getSum(dealerHand);
-  var diff = abs(playerSum - dealerSum);
-  if (dealerSum > 21) {
-    statusMessage = "Dealer busts with " + dealerSum + ", you win!";
-  } else if(dealerSum == 21) {
-    if(playerSum == 21) {
-      statusMessage = "Draw!";
-    } else {
-      statusMessage = "Dealer wins with blackjack!";
-    }
-  } else if (playerSum == dealerSum) {
-    statusMessage = "Draw!";
-  } else if (playerSum > dealerSum) {
-    if (playerSum == 21) {
-      statusMessage = "You win with blackjack!";
-    } else {
-      statusMessage = "You have " + diff + " point(s) more than the dealer, you win!";
-    }
-  } else if (playerSum < dealerSum) {
-    statusMessage = "Dealer beats you by " + diff + " point(s), you lose";
-  }
-  return statusMessage;
+  $("#place-bet").attr("disabled", true);
 }
 
 function playAgain() {
   $("#stay-hand").attr("disabled", false);
   $("#hit-me").attr("disabled", false);
+  $("#place-bet").attr("disabled", false);
   hidden = true;
   playerHand = [];
   dealerHand = [];

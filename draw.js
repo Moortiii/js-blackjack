@@ -1,3 +1,4 @@
+// Draws the dealer's cards
 function dealerCardSprite(hand, card, y) {
   var w = 75;
   var h = 125;
@@ -15,7 +16,7 @@ function dealerCardSprite(hand, card, y) {
     } else {
       fill(0);
     }
-
+    // Draws the text for the rest of the dealer's cards
     noStroke();
     textAlign(CENTER);
     textSize(22);
@@ -23,7 +24,7 @@ function dealerCardSprite(hand, card, y) {
 
     x += spacing;
   }
-
+  // Draws the text for the dealer's first card
   fill(0);
   noStroke();
   textAlign(CENTER);
@@ -31,6 +32,7 @@ function dealerCardSprite(hand, card, y) {
   text(hand[0], width/2+360, y);
 }
 
+// Draws the user's cards
 function userCardSprite(hand, card, y) {
   var w = 75;
   var h = 125;
@@ -43,6 +45,7 @@ function userCardSprite(hand, card, y) {
     fill(255);
     rect(x, this.y, w, h, 8);
 
+    // Draws the text for the user's cards
     fill(0);
     noStroke();
     textAlign(CENTER);
@@ -52,6 +55,7 @@ function userCardSprite(hand, card, y) {
   }
 }
 
+// Draws the text for the player's sum
 function playerHandSprite() {
   var playerSum = getSum(playerHand);
   textSize(32);
@@ -63,6 +67,7 @@ function playerHandSprite() {
   }
 }
 
+// Draws the text that signifies where the dealer's hand is
 function dealerHandSprite() {
   textSize(28);
   textAlign(RIGHT);
@@ -73,14 +78,15 @@ function dealerHandSprite() {
   }
 }
 
+// Draws the end-game text
 function drawWinnerText() {
-  var statusMessage = chooseWinner();
   fill(255);
   textSize(28);
   textAlign(CENTER);
-  text(statusMessage, width/2, height - 50);
+  text(message, width/2, height - 50);
 }
 
+// Draws the text that shows if the player busts
 function playerBust() {
   var playerSum = getSum(playerHand);
   var dealerSum = getSum(dealerHand);
@@ -91,25 +97,21 @@ function playerBust() {
   text(statusMessage, width/2, height-75);
 }
 
-function playerIsBust() {
-  var playerSum = getSum(playerHand);
-  return playerSum > 21;
+function drawBalance() {
+  balanceText = "Balance: " + balance;
+  $("#balance-label").html(balanceText);
 }
 
+// Redraws the sketch
 function redrawSketch() {
   background(48, 219, 110);
+  drawBalance();
   bust = playerIsBust();
+  playerHandSprite();
+  dealerHandSprite();
   if(bust) {
     disableButtons();
     hidden = false;
-    playerHandSprite();
-    dealerHandSprite();
     playerBust();
-  } else {
-    playerHandSprite();
-    dealerHandSprite();
-    $("#stay-hand").click(function() {
-      drawWinnerText();
-    })
   }
 }
