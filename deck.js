@@ -10,12 +10,12 @@ function createDeck() {
 }
 
 function discardCard() {
-  deck.splice(0, 1); // Remove the last card from the deck
+  deck.splice(-1, 1); // Remove the last card from the deck
 }
 
 function drawCard() {
   background(66, 244, 155);
-  var card = deck[0]; // Draw the last card from the deck
+  var card = deck[deck.length -1]; // Draw the last card from the deck
   discardCard(); // Discard the last card from the deck
   return card;
 }
@@ -40,8 +40,21 @@ function getValue(card) {
 // Grabs the sum of an arbitrary hand
 function getSum(hand) {
   var sum = 0;
+  var aceCount = 0;
   for(var i = 0; i < hand.length; i++) {
-    sum += getValue(hand[i]);
+    cardValue = getValue(hand[i]);
+    if(cardValue == 1) {
+      aceCount += 1;
+    } else {
+      sum += cardValue;
+    }
+  }
+  for(var i = 0; i < aceCount; i++) {
+    if(sum + 11 < 21) {
+      sum += 11;
+    } else {
+      sum += 1;
+    }
   }
   return sum;
 }
