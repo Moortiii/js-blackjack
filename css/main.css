@@ -3,5 +3,10 @@
   color: #333;
   border: none;
   border-radius: 5px;
+  background: #f45c42;
+
+}
+
+.button-submit:disabled {
   background: #d7e3f7;
 }
