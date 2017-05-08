@@ -78,19 +78,6 @@ function dealerHandSprite() {
   }
 }
 
-function playerBust() {
-  var statusMessage = "";
-  var playerSum = getSum(playerHand);
-  var dealerSum = getSum(dealerHand);
-  if (playerSum > 21) {
-    statusMessage = "You bust with " + playerSum + ", dealer wins";
-  }
-  fill(255);
-  textSize(28);
-  textAlign(LEFT);
-  text(statusMessage, 50, height - 50);
-}
-
 function drawWinnerText() {
   var statusMessage = chooseWinner();
   fill(255);
@@ -99,10 +86,29 @@ function drawWinnerText() {
   text(statusMessage, 50, height - 50);
 }
 
+function playerBust() {
+  var statusMessage = "You bust with " + playerSum + ", dealer wins";
+  fill(255);
+  textSize(28);
+  textAlign(LEFT);
+  text(statusMessage, 50, height - 50);
+}
+
+function playerIsBust() {
+  var playerSum = getSum(playerHand);
+  return playerSum > 21;
+}
+
 function redrawSketch() {
+  bust = playerIsBust();
+  if(bust) {
+    hidden = false;
+    playerHandSprite();
+    dealerHandSprite();
+    playerBust();
+  }
   playerHandSprite();
   dealerHandSprite();
-  playerBust();
   $("#stay-hand").click(function() {
     drawWinnerText();
   })

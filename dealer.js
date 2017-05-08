@@ -20,7 +20,7 @@ function dealHands() {
 }
 
 function hitMe() {
-  var newCard = drawCard();
+  newCard = drawCard();
   playerHand.push(newCard);
   dealerDraw();
 }

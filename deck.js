@@ -50,10 +50,11 @@ function getSum(hand) {
     }
   }
   for(var i = 0; i < aceCount; i++) {
-    if(sum + 11 < 21) {
-      sum += 11;
-    } else {
-      sum += 1;
+    sum += 1;
+  }
+  for(var i = 0; i < aceCount; i++) {
+    if(sum + 10 <= 21) {
+      sum += 10;
     }
   }
   return sum;
