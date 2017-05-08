@@ -53,28 +53,23 @@ function userCardSprite(hand, card, y) {
 }
 
 function playerHandSprite() {
+  var playerSum = getSum(playerHand);
   textSize(32);
   textAlign(LEFT);
   fill(255);
-  text("Your hand", width/2-360, 375);
+  text("Your sum: " + playerSum, width/2-360, 300);
   for (var i = 0; i < playerHand.length; i++) {
-    userCardSprite(playerHand, playerHand[i], 500);
+    userCardSprite(playerHand, playerHand[i], 400);
   }
-  var playerSum = getSum(playerHand);
-  var sumText = "Your sum: " + playerSum;
-  textSize(28);
-  textAlign(CENTER);
-  fill(255);
-  text(sumText, width/2, height - 150);
 }
 
 function dealerHandSprite() {
   textSize(28);
   textAlign(RIGHT);
   fill(255);
-  text("Dealer's hand", width/2+360, 75);
+  text("Dealer's hand", width/2+360, 55);
   for (var i = 0; i < dealerHand.length; i++) {
-    dealerCardSprite(dealerHand, dealerHand[i], 200);
+    dealerCardSprite(dealerHand, dealerHand[i], 150);
   }
 }
 
@@ -93,7 +88,7 @@ function playerBust() {
   fill(255);
   textSize(28);
   textAlign(CENTER);
-  text(statusMessage, width/2, height - 50);
+  text(statusMessage, width/2, height-75);
 }
 
 function playerIsBust() {
